@@ -1,4 +1,8 @@
 import React from 'react';
+import {ButtonToggle} from 'reactstrap';
+
+
+
 
 const TableHeader = () => { 
     // boilerplate table header functional component
@@ -21,7 +25,8 @@ const TableBody = props => {
             <tr key={index}>
                 <td>{row.name}</td>
                 <td><a href={row.URL}>{row.URL}</a></td>
-                <td><button onClick={() => props.removeLink(index)}>Delete</button></td>
+                {/* <td><button onClick={() => props.removeLink(index)}>Delete</button></td> */}
+                <td><ButtonToggle color="danger" onClick={() => props.removeLink(index)}>Delete</ButtonToggle></td>
             </tr>
         );
     });
@@ -30,9 +35,17 @@ const TableBody = props => {
 }
 
 const Table = (props) => {
-//    const { linkData, removeLink } = props;
+    const { linkData, removeLink } = props;
     {/*TODO - return <table> component, TableHeader and TableBody  */}
-
+    return(
+        <table>
+            <TableHeader />
+            <TableBody linkData={linkData} removeLink={removeLink}/>
+            {console.log(linkData)}
+        </table>
+        
+    )
 }
+
 
 export default Table;
